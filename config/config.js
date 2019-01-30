@@ -1,8 +1,10 @@
-{
+require("dotenv").config();
+
+var config = {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "exampledb",
+    "username": process.env.user,
+    "password": process.env.password,
+    "database": process.env.database,
     "host": "localhost",
     "dialect": "mysql"
   },
@@ -19,3 +21,5 @@
     "dialect": "mysql"
   }
 }
+
+module.export = config;
