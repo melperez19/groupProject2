@@ -10,5 +10,5 @@ INSERT INTO questions (category, question, choices, correctAnswer) values ('Cons
 INSERT INTO questions (category, question, choices, correctAnswer) values ('Mars', 'When did the first robot land on Mars?', "a, b, c, d", "a");
 INSERT INTO questions (category, question, choices, correctAnswer) values ('Mars', 'What color is Mars?', "a, b, c, d", "b");
 
-SELECT * FROM authors;
-SELECT * FROM books;
+SELECT * FROM user;
+SELECT * FROM questions;
