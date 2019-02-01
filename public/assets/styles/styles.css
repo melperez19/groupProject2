@@ -1,3 +1,75 @@
-.list-group-item {
+/* .list-group-item {
   line-height: 2.5;
+} */
+
+/*--------------------------------- Background Image and Nav Bar on all Pages -------------------------------- */
+
+body {
+  background-image: url(../images/body-bg.jpg);
+  background-repeat: no-repeat;
 }
+
+.navbar-default {
+  background-color: black;
+}
+
+.navbar-brand, .navbar-toggler {
+  color: white;
+  size: 100%;
+}
+
+.navSubmit {
+  margin-right: 5px;
+}
+
+/*-------------------------------------------- Home page styling --------------------------------------------- */
+
+.jumbotron-fluid {
+  margin-bottom: 0px;
+  background-image: url(../images/background1.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: fixed;
+  /* color: white;
+  text-shadow: black 0.3em 0.3em 0.3em; */
+}
+
+.display-4, .lead {
+  color: white;
+  text-shadow: black 0.3em 0.3em 0.3em;
+
+}
+
+.modal-footer {
+  margin-left: 0%;
+}
+
+/* .colorStrip {
+  color: orange;
+  height: 30%;
+  width: 100vw;
+  margin-bottom: 10px;
+} */
+
+
+.weather, .meteorology, .resources {
+  border: 1px solid blue;
+  box-shadow: orange 0.3em 0.3em 0.3em;
+  float: left;
+  height: 20%;
+  margin-top: 30px;
+  text-align: center;
+ 
+}
+
+.home-results {
+  color: white;
+  text-shadow: black 0.3em 0.3em 0.3em;
+}
+
+/*------------------------------------------ Quiz Page Styling ---------------------------------------------------*/
+
+.quiz-header {
+  margin-top: 100px;
+}
+

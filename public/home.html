@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel='icon' href='assets/images/favicon2.jpg' type='image/x-icon' />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One|Monoton|Roboto" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
+    <!-- Style.CSS -->
+    <link rel="stylesheet" href="assets/styles/styles.css" type="text/css" />
+    <!-- Main Javascript -->
+    <!-- <script type="text/javascript" src="/assets/js/main.js"></script> -->
+
+    <title> Interstellar Universe </title>
+
+
+</head>
+
+<body>
+
+    <!-- Navbar Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-default bg-default">
+        <a class="navbar-brand" a href="/">Interstellar Universe </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            
+            <span class="navbar-toggler-icon"><i class="far fa-list-alt"></i></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" a href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/404">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/404">Games</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" a href="/quiz">Science Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/404">Testimonials</a>
+                </li>
+            </ul>
+
+            <!-- Navbar Location Search Form -->
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="City, State" aria-label="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0 navSubmit" type="submit">Search</button>
+            </form>
+            <!-- Navbar Topic Search Form -->
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Any science topics" aria-label="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0 navSubmit" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Jumbotron Header -->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container-jumbotron text-center">
+            <h1 class="display-4">Welcome to The Interstellar Universe</h1>
+            <p class="lead">Where fun and educational resources are available in all that is science!</p>
+            <!-- Sign in Button -->
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-primary btn-lg" id="myBtn">Login</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header" style="padding:35px 50px;">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h3><span class="glyphicon glyphicon-lock mr-auto"></span> Login</h3>
+                        </div>
+                        <div class="modal-body" style="padding:40px 50px;">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+                                    <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                                    <input type="text" class="form-control" id="psw" placeholder="Enter password">
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="" checked>Remember me</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span>
+                                    Login</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer text-left">
+                            <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span
+                                    class="glyphicon glyphicon-remove"></span> Cancel</button>
+                            <p>Not a member? <a href="#">Sign Up</a></p>
+                            <p>Forgot <a href="#">Password?</a></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Api Search Result Container -->
+    <div class="container home-results">
+
+        <div class="weather col-6 mt-5">
+            <h4> Related Weather Info</h4>
+        </div>
+        <div class="meteorology col-6 mt-5">
+            <h4>Related Meteorology Info</h4>
+        </div>
+        <div class="resources col-12">
+            <h4>Resources based on Search</h4>
+        </div>
+
+    </div>
+
+
+
+    <script>
+        $(document).ready(function () {
+            $("#myBtn").click(function () {
+                $("#myModal").modal()
+            });
+        });
+    </script>
+
+</body>
+
+
+
+
+</html>
