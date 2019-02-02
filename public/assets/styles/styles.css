@@ -5,8 +5,10 @@
 /*--------------------------------- Background Image and Nav Bar on all Pages -------------------------------- */
 
 body {
-  background-image: url(../images/body-bg.jpg);
+  background-image: url(../images/background1.gif);
+  background-size: cover;
   background-repeat: no-repeat;
+  background-position: fixed;
 }
 
 .navbar-default {
@@ -24,14 +26,26 @@ body {
 
 /*-------------------------------------------- Home page styling --------------------------------------------- */
 
-.jumbotron-fluid {
+.jumbotron {
   margin-bottom: 0px;
   background-image: url(../images/background1.gif);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: fixed;
-  /* color: white;
-  text-shadow: black 0.3em 0.3em 0.3em; */
+  /* box-shadow: #004085 0.3em 0.3em 0.3em; */
+  
+}
+
+/* For moving letters */
+.ml2 .letter {
+  display: inline-block;
+  line-height: 1em;
+  font-weight: bold;
+}
+
+.homeTitle {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 45px;
 }
 
 .display-4, .lead {
@@ -67,9 +81,34 @@ body {
   text-shadow: black 0.3em 0.3em 0.3em;
 }
 
+
+
+
 /*------------------------------------------ Quiz Page Styling ---------------------------------------------------*/
+.quiz {
+  
+    background-image: url(../images/body-bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: fixed;
+  
+}
 
 .quiz-header {
   margin-top: 100px;
+}
+
+#wrapper {
+  color: #fff;
+}
+
+/* Moving Letters */
+.ml16 {
+  overflow: hidden;
+}
+
+.ml16 .letter {
+  display: inline-block;
+  line-height: 1em;
 }
 

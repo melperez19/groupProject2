@@ -23,14 +23,15 @@
         crossorigin="anonymous">
     <!-- Style.CSS -->
     <link rel="stylesheet" href="assets/styles/styles.css" type="text/css" />
-    <!-- Main Javascript -->
-    <!-- <script type="text/javascript" src="/assets/js/main.js"></script> -->
+    <!-- Moving Letters Javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
 
     <title> Interstellar Universe </title>
 
 </head>
 
-<body>
+<body class="quiz">
 
     <!-- Navbar Navigation -->
     <nav class="navbar navbar-expand-lg navbar-default bg-default">
@@ -65,15 +66,25 @@
 
     <!-- Jumbotron Start Quiz Header -->
     <div class="container-jumbotron text-center py-30">
-        <h1 class="quiz-header display-4">Time to reveal the science genius within!</h1>
+        <h1 class="quiz-header display-4 ml16">Time to reveal the science genius within!</h1>
         <!-- Get Started Button -->
-        <button type="pickGameBtn" class="btn btn-primary btn-lg" id="pickGameBtn">Let's Get Started</button>
+        <div id="wrapper">
+            <h1>Quiz Time</h1>
+            <div id="sub-wrapper">
+                <div id="quiz-area">
+                    <button type="button" class="btn btn-primary btn-lg" id="start">Let's Get Started</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 
 
-<!-- Javascript -->
-
+    <!-- Javascript -->
+    <script type="text/javascript" src="assets/js/game.js"></script>
+    <!-- Moving Letters Javascript -->
+    <script type="text/javascript" src="assets/js/movingLetter.js"></script>
 
 </body>
+
 </html>
