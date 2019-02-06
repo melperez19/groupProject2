@@ -1,3 +1,5 @@
+// import { start } from "repl";
+
 // Get references to page elements
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
@@ -21,33 +23,45 @@ var API = {
       url: "api/questions",
       type: "GET"
     }).then(function (data) {
-      //  console.log(data);
+       console.log(data);
       cb(data);
     });
   },
-  newUser: function (cb) {
+  newUser: function (user, cb) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
       url: "api/user",
-      data: JSON.stringify(cb)
+      data: JSON.stringify(user)
     }).then(function (data) {
       //  console.log(data);
       cb(data);
     });
   },
-  getUser: function (cb) {
+  getUser: function (userName, cb) {
     return $.ajax({
-      url: "api/user",
+      url: "api/user/" + userName,
       type: "GET"
     }).then(function (data) {
       //  console.log(data);
       cb(data);
     });
+  },
+  updateUser: function (update, cb) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "PATCH",
+      url: "api/user",
+      data: JSON.stringify(update)
+    }).then(function () {
+      cb();
+    });
   }
-  //,
+    //,
   // deleteExample: function(id) {
   //   return $.ajax({
   //     url: "api/examples/" + id,
@@ -131,12 +145,15 @@ var questions = [];
 
 // Variable to hold our setInterval
 var timer;
+var game;
+var currentUser;
 
-API.getQuestions(function (data) {
+function startGame(data) {
+  
   questions = data;
   console.log(questions);
 
-  var game = {
+  game = {
     questions: questions,
     currentQuestion: 0,
     gamesPlayed: 0,
@@ -163,8 +180,10 @@ API.getQuestions(function (data) {
       };
       // console.log(questions[i].choices);
 
-      card.html("<h2>The category is: " + questions[game.currentQuestion].category + "</h2>" +
-        "<h2>" + questions[game.currentQuestion].question + "</h2>");
+      card.html("<h2>User Name: " + currentUser.user_name + "</h2>" 
+        + "<h2>Current Best Score: " + currentUser.best_score + "</h2>"
+        + "<h2>The category is: " + questions[game.currentQuestion].category + "</h2>" 
+        + "<h2>" + questions[game.currentQuestion].question + "</h2>");
 
       for (var i = 0; i < questions[game.currentQuestion].choices.length; i++) {
         // currentQuestion = 0
@@ -207,6 +226,14 @@ API.getQuestions(function (data) {
       card.append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
       card.append("<h3>Unanswered: " + (questions.length - (game.incorrect + game.correct)) + "</h3>");
       card.append("<br><button id='start-over'>Start Over?</button>");
+      if (game.correct > currentUser.best_score) {
+        API.updateUser({
+          user_name: currentUser.user_name, 
+          best_score: game.correct
+        }, function () {
+          currentUser.best_score = game.correct;
+        })
+      }
     },
 
     clicked: function (e) {
@@ -262,7 +289,8 @@ API.getQuestions(function (data) {
       game.loadQuestion();
     }
   };
-});
+  game.loadQuestion();
+}
 
 // CLICK EVENTS
 
@@ -280,20 +308,27 @@ $(document).on("click", "#start", function (e) {
   $("#sub-wrapper").prepend(
     "<h2>Time Remaining: <span id='counter-number'>30</span> Seconds</h2>"
   );
-  var username = {
+  $("#myBtn").hide();
+  
+  var newUserInfo = {
     user_name: $("#username").val().trim(),
     best_score: 0
   };
-  console.log(username);
-
-  API.newUser(username).then(function () {
-    game.loadQuestion();
-
-    // $.post("/api/user").then(function(data) {
-    //   $("#username").text(data);
-    // });
-
-    // game.loadQuestion();
+  API.getUser(newUserInfo.user_name, function(data){
+    if (data) {
+      currentUser = {
+        user_name: data.user_name,
+        best_score: data.best_score
+      };
+      API.getQuestions(startGame);
+    } else {
+      API.newUser(newUserInfo, function() {
+        currentUser = newUserInfo;
+        API.getQuestions(startGame); 
+      });
+    }
   });
+  console.log(newUserInfo);
+  
 
 });
