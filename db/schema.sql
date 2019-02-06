@@ -9,6 +9,7 @@ CREATE TABLE user (
     user_id INTEGER(10) AUTO_INCREMENT,    
     regtime DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL,
     user_name VARCHAR(45) NOT NULL,
+    best_score INTEGER(10),
    PRIMARY KEY (user_id)
 );
 
@@ -25,5 +26,6 @@ CREATE TABLE user_question_answer (
     user_id INTEGER(10) PRIMARY KEY,    
     question_id INTEGER(10),
    users_choice INTEGER,
-   is_correct BOOLEAN DEFAULT FALSE
+   is_correct BOOLEAN DEFAULT FALSE,
+   quiz_score INTEGER
 );
