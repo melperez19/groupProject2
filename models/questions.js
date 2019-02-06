@@ -37,13 +37,13 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
-    Questions.associate = function(models) {
-        // Associating User with Posts
-        // When an User is deleted, also delete any associated Posts
-        Questions.hasMany(models.User_Question_Answer, {
-            onDelete: "cascade"
-        });
-    };
+    // Questions.associate = function(models) {
+    //     // Associating User with Posts
+    //     // When an User is deleted, also delete any associated Posts
+    //     Questions.hasMany(models.User_Question_Answer, {
+    //         onDelete: "cascade"
+    //     });
+    // };
 
     return Questions;
 };

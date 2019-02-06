@@ -47,7 +47,7 @@
                     <a class="nav-link" a href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/404">Products</a>
+                    <a class="nav-link" href="/products">Products</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/404">Games</a>
@@ -56,7 +56,7 @@
                     <a class="nav-link" a href="/quiz">Science Quiz</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/404">Testimonials</a>
+                    <a class="nav-link" href="/meetTeam">Meet The Team</a>
                 </li>
             </ul>
 
@@ -67,19 +67,51 @@
     <!-- Jumbotron Start Quiz Header -->
     <div class="container-jumbotron text-center py-30">
         <h1 class="quiz-header display-4 ml16">Time to reveal the science genius within!</h1>
-        <!-- Get Started Button -->
-        <div id="wrapper">
-            <h1>Quiz Time</h1>
-            <div id="sub-wrapper">
-                <div id="quiz-area">
-                    <button type="button" class="btn btn-primary btn-lg" id="start">Let's Get Started</button>
+         <!-- Sign in Button -->
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-primary btn-lg" id="myBtn">Login To Save Your Score</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header" style="padding:35px 50px;">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h3><span class="glyphicon glyphicon-lock mr-auto"></span> Login</h3>
+                        </div>
+                        <div class="modal-body" style="padding:40px 50px;">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="username"><span class="glyphicon glyphicon-user"></span> Username</label>
+                                    <input type="text" class="form-control" id="username" required placeholder="Enter a username">
+                                </div>
+                                <button type="submit" id="start" class="btn btn-primary btn-block" data-dismiss="modal"><span class="glyphicon glyphicon-off"></span>
+                                    Start Quiz </button>
+                            </form>
+                        </div>
+                        
+                    </div>
+
                 </div>
             </div>
-        </div>
-    </div>
+            <div id="wrapper">
+                <h1>Quiz Time</h1>
+                <div id="sub-wrapper">
+                    <div id="quiz-area">
+                        <button type="button" class="btn btn-primary btn-lg" id="start">Let's Get Started</button>
+                    </div>
+                </div>
+            </div>
 
-
-
+            <script>
+                $(document).ready(function () {
+                    $("#myBtn").click(function () {
+                        $("#myModal").modal()
+                    });
+                });
+            </script>
     <!-- Javascript -->
     <script type="text/javascript" src="assets/js/game.js"></script>
     <!-- Moving Letters Javascript -->

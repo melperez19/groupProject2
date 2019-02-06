@@ -1,4 +1,6 @@
 var db = require("../models");
+var axios = require("axios");
+
 
 module.exports = function(app) {
   // Get all examples
@@ -23,4 +25,17 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
-};
+
+  // Get all Ebay API data
+  var apiEndpointBaseURL = "https://svcs.ebay.com/services/search/FindingService/v1?";
+  var apiKey = process.env.ebayAPI;
+  app.get("/jsonTest", function (req, res) {
+    console.log(req.query);
+    var SearchTerm=req.query.q;
+    axios.get(`${apiEndpointBaseURL}SECURITY-APPNAME=${apiKey}&OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=${SearchTerm}&paginationInput.entriesPerPage=10&GLOBAL-ID=EBAY-US&siteid=0&categoryId=31734`).then(function(data){
+      // &siteid=0
+      // console.log(data.data.findItemsByKeywordsResponse.errorMessage.error);
+      res.json(data.data);
+    }) 
+  });
+}
