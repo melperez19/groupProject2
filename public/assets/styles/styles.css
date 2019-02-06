@@ -85,7 +85,7 @@ body {
 
 
 /*------------------------------------------ Quiz Page Styling ---------------------------------------------------*/
-.quiz {
+.quiz-meetTeam-products {
   
     background-image: url(../images/body-bg.jpg);
     background-size: cover;
@@ -110,5 +110,247 @@ body {
 .ml16 .letter {
   display: inline-block;
   line-height: 1em;
+}
+
+/* ----------------------------------------------Meet the Team ----------------------------------------------------- */
+/* Moving Letters */
+.ml5 {
+  position: relative;
+  font-weight: 300;
+  font-size: 4.5em;
+  color: #402d2d;
+}
+
+.ml5 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.1em;
+  padding-right: 0.05em;
+  padding-bottom: 0.15em;
+  line-height: 1em;
+}
+
+.ml5 .line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 3px;
+  width: 100%;
+  background-color: #402d2d;
+  transform-origin: 0.5 0;
+}
+
+.ml5 .ampersand {
+  font-family: Baskerville, "EB Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  width: 1em;
+  margin-right: -0.1em;
+  margin-left: -0.1em;
+}
+
+.ml5 .letters {
+  display: inline-block;
+  opacity: 0;
+}
+
+
+.profile-card{
+  position:relative;
+  overflow: hidden;
+  margin-bottom:10px;
+}
+.profile-card .profile-img img{
+  width:100%;
+  height:auto;
+}
+.profile-card .profile-content::before{
+  content: "";
+  position:absolute;
+  top:0;
+  left:0;
+  width:50%;
+  height:40%;
+  border:3px solid #222;
+  border-right:3px solid transparent;
+  border-bottom:3px solid transparent;
+  transform: scale(1,1);
+  transition: all 0.50s linear;
+}
+.profile-card .profile-content::after{
+  content: "";
+  position:absolute;
+  bottom:0;
+  right:0;
+  width:50%;
+  height:40%;
+  border:3px solid #222;
+  border-left:3px solid transparent;
+  border-top:3px solid transparent;
+  transition: all 0.50s linear;
+}
+.profile-card:hover .profile-content:before{
+  top:20px;
+  left:20px;
+}
+.profile-card:hover .profile-content:after{
+  bottom:20px;
+  right:20px;
+}
+.profile-card .profile-content::after{
+  content: "";
+  position:absolute;
+  bottom:0;
+  right:0;
+  width:50%;
+  height:40%;
+  border:3px solid #222;
+  border-left:3px solid transparent;
+  border-top:3px solid transparent;
+  transform: scale(1,1);
+  transition: all 0.50s linear;
+}
+.profile-card .profile-content{
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  padding:50% 4%;
+  text-align: center;
+  background-color: rgba(255,255,255,0.4);
+}
+.profile-card .profile-content .title{
+  font-size:24px;
+  color:#333;
+  opacity:0;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  transform: translateY(-100px);
+  transition:all 900ms cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.20s;
+}
+.profile-card:hover .title{
+  opacity:1;
+  transform: translateY(0);
+}
+.profile-card:hover .title::after{
+  content:"";
+  display:block;
+  width:50%;
+  margin:10px auto;
+  border-bottom:2px solid #222;
+}
+.profile-card .profile-content .title > span{
+  display:block;
+  margin:5px 0;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+.profile-card .profile-content .social-link{
+  margin:20px 0;
+  padding:0;
+  opacity:0;
+  transform: translateY(100px);
+  transition:all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.20s;
+}
+.profile-card:hover .social-link{
+  opacity:1;
+  transform: translateY(0);
+}
+.profile-card .profile-content .social-link li{
+  display: inline-block;
+  list-style: none;
+  margin:0 4px;
+}
+.profile-card .profile-content .social-link li a{
+  color:#333;
+  width:30px;
+  height:25px;
+  line-height:24px;
+  text-align: center;
+  border-radius:5px;
+  background-color: #fff;
+}
+
+/* -------------------------------------------------Products Page------------------------------------------------------ */
+
+.form-inline {
+  flex-flow: row wrap;
+}
+
+.line-break {
+  width: 100vw;
+  height: 20%;
+  color: white;
+}
+
+
+h1 {
+  color: #777;
+  font-weight: normal;
+  font-size: 24px;
+  margin: 0;
+  margin-left: 5px;
+}
+
+h5 {
+  color: white;
+}
+
+tr {
+  border-bottom: 1px solid #CCC;
+  padding: 15px 0;
+  display: block;
+}
+
+.image-container {
+  text-align: center;
+  border: 1px solid #CCC;
+  width: 150px;
+}
+
+.data-container {
+  vertical-align: top;
+  padding-left: 15px;
+}
+
+p {
+  margin: 0 0 5px;
+}
+
+.item-link,
+.item-link:hover,
+.item-link:visited,
+.item-link:active {
+  text-decoration: none;
+  color: #333;
+}
+
+.title {
+  color: #5786bd;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #777;
+  font-size: 12px;
+}
+
+.price {
+  color: #333;
+  font-weight: bold;
+}
+
+.bin {
+  color: #777;
+  font-size: 12px;
+}
+
+.fs {
+  font-size: 12px;
+  font-weight: bold;
 }
 

@@ -1,23 +1,33 @@
 var db = require("../models");
 var path = require("path");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // -----------------------------------------------To link to the HTML Pages-------------------------------------------------------------
 
-// A GET Route to /survey which should display the quiz page.
-app.get("/quiz", function (request, response) {
-  response.sendFile(path.join(__dirname, "../public/quiz.html"));
-});
+  // A GET Route to /survey which should display the quiz page.
+  app.get("/quiz", function (request, response) {
+    response.sendFile(path.join(__dirname, "../public/quiz.html"));
+  });
 
-// A default, catch-all route that leads to home.html which displays the home page.
-app.get("/", function (request, response) {
-  response.sendFile(path.join(__dirname, "../public/home.html"));
-});
+  // A default, catch-all route that leads to home.html which displays the home page.
+  app.get("/", function (request, response) {
+    response.sendFile(path.join(__dirname, "../public/home.html"));
+  });
 
-// A default, catch-all route that leads to home.html which displays the home page.
-app.get("/404", function (request, response) {
-  response.sendFile(path.join(__dirname, "../public/404.html"));
-});
+  // A default, catch-all route that leads to meetTeam.html which displays the meetTeam page.
+  app.get("/meetTeam", function (request, response) {
+    response.sendFile(path.join(__dirname, "../public/meetTeam.html"));
+  });
+
+  // A default, catch-all route that leads to products.html which displays the products page.
+  app.get("/products", function (request, response) {
+    response.sendFile(path.join(__dirname, "../public/products.html"));
+  });
+
+  // A default, catch-all route that leads to 404.html which displays the 404 error page.
+  app.get("/404", function (request, response) {
+    response.sendFile(path.join(__dirname, "../public/404.html"));
+  });
 
 
 };

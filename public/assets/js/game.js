@@ -127,47 +127,7 @@ var card = $("#quiz-area");
 var countStartNumber = 30;
 
 // Question set
-var questions = [
-  //{
-  //   "category": "Moon",
-  //   "question": "How far away is the moon?",
-  //   "answers": ["238,900 miles", "310,000 miles", "19,586 miles", "524,356 miles"],
-  //   "correctAnswer": "238,900",
-  //   "image": "assets/images/moonRotation.gif"
-  // }, {
-  //   "category": "Moon",
-  //   "question": "What is the orbital period of the moon?",
-  //   "answers": ["2 months", "27 days", "2 weeks", "none"],
-  //   "correctAnswer": "27 days",
-  //   "image": "assets/images/moonOrbit.gif"
-  // }, {
-  //   "category": "Constellation",
-  //   "question": "What star will lead you north?",
-  //   "answers": ["Santa Claus", "Celine Dion", "Polaris", "Big Dipper"],
-  //   "correctAnswer": "Polaris",
-  //   "image": "assets/images/polaris.gif"
-  // }, {
-  //   "category": "Constellation",
-  //   "question": "How many stars make up the belt of Orion?",
-  //   "answers": ["7", "5", "19", "3"],
-  //   "correctAnswer": "3",
-  //   "image": "https://thumbs.gfycat.com/IllinformedShockedBlesbok-size_restricted.gif"
-  // }, {
-  //   "category": "Mars",
-  //   "question": "When did the first robot land on Mars?",
-  //   "answers": ["1997", "1900", "2000", "2002"],
-  //   "correctAnswer": "1997",
-  //   "image": "assets/images/sojourner.gif"
-  // }, {
-  //   "category": "Mars",
-  //   "question": "What color is Mars?",
-  //   "answers": ["Blue", "Red", "Green", "Hazy"],
-  //   "correctAnswer": "Red",
-  //   "image": "https://media.giphy.com/media/cmzkzpxPS3xl8hRVJm/giphy.gif"
-  // }
-];
-
-
+var questions = [];
 
 // Variable to hold our setInterval
 var timer;
@@ -197,7 +157,7 @@ API.getQuestions(function (data) {
       console.log(questions);
       timer = setInterval(game.countdown, 1000);
 
-      // console.log("current question, choice?: " + this.currentQuestion.choices);
+      // console.log("current question, choice?: " + questions[game.currentQuestion].choices);
       if (game.gamesPlayed === 0) {
         questions[game.currentQuestion].choices = questions[game.currentQuestion].choices.split(", ");
       };
@@ -302,23 +262,38 @@ API.getQuestions(function (data) {
       game.loadQuestion();
     }
   };
+});
 
+// CLICK EVENTS
 
-  // CLICK EVENTS
+$(document).on("click", "#start-over", function () {
+  game.reset();
+});
 
-  $(document).on("click", "#start-over", function () {
-    game.reset();
-  });
+$(document).on("click", ".answer-button", function (e) {
+  game.clicked(e);
+});
 
-  $(document).on("click", ".answer-button", function (e) {
-    game.clicked(e);
-  });
+$(document).on("click", "#start", function (e) {
+  e.preventDefault();
+  console.log("#start");
+  $("#sub-wrapper").prepend(
+    "<h2>Time Remaining: <span id='counter-number'>30</span> Seconds</h2>"
+  );
+  var username = {
+    user_name: $("#username").val().trim(),
+    best_score: 0
+  };
+  console.log(username);
 
-  $(document).on("click", "#start", function () {
-    $("#sub-wrapper").prepend(
-      "<h2>Time Remaining: <span id='counter-number'>30</span> Seconds</h2>"
-    );
+  API.newUser(username).then(function () {
     game.loadQuestion();
+
+    // $.post("/api/user").then(function(data) {
+    //   $("#username").text(data);
+    // });
+
+    // game.loadQuestion();
   });
 
 });
