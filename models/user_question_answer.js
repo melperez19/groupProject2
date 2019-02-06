@@ -10,6 +10,9 @@ module.exports = function(sequelize, DataTypes) {
       is_correct: {
         type: DataTypes.BOOLEAN,
         default: false
+      },
+      quiz_score: {
+        type: DataTypes.INTEGER
       }
     });
   

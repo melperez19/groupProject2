@@ -24,6 +24,28 @@ var API = {
       //  console.log(data);
       cb(data);
     });
+  },
+  newUser: function (cb) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/user",
+      data: JSON.stringify(cb)
+    }).then(function (data) {
+      //  console.log(data);
+      cb(data);
+    });
+  },
+  getUser: function (cb) {
+    return $.ajax({
+      url: "api/user",
+      type: "GET"
+    }).then(function (data) {
+      //  console.log(data);
+      cb(data);
+    });
   }
   //,
   // deleteExample: function(id) {
@@ -176,7 +198,7 @@ API.getQuestions(function (data) {
       timer = setInterval(game.countdown, 1000);
 
       // console.log("current question, choice?: " + this.currentQuestion.choices);
-      if (game.gamesPlayed === 0){
+      if (game.gamesPlayed === 0) {
         questions[game.currentQuestion].choices = questions[game.currentQuestion].choices.split(", ");
       };
       // console.log(questions[i].choices);
