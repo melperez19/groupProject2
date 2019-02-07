@@ -2,8 +2,8 @@
 
 body {
     background-image: url(../images/alien-404.jpg);
+    background-color: #000;
     background-repeat: no-repeat;
-    
     background-position: fixed;
   }
 

@@ -61,25 +61,34 @@
             </ul>
         </div>
     </nav>
-    <!-- Jumbotron Start Quiz Header -->
-    <div class="container text-center py-30">
-        <h1 class="display-4 mt-20 ml16">Search Related Products</h1>
+    <!-- Jumbotron Products -->
+    <div class="container py-30">
+        <h1 class="display-4 mt-20 ml16 text-center">Search Related Products</h1>
         <hr>
-        <div class="row d-flex flex-row">
-            <div class="col-4"></div>
-            <div class="col-4">
+        <div class="row d-flex justify-content-center">
+            <div>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" id="ebaySearchTerm" placeholder="" aria-label="Search">
                     <button type="button" class="btn btn-primary btn-lg" id="start">Search</button>
                 </form>
                 <hr>
             </div>
-            <div class="col-12 justify-content-start" id="search-appears-here"></div>
-            
-            
         </div>
-
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8 d-flex flex-column justify-content-start" id="search-appears-here"></div>
+            <div class="col-2"></div>
+        </div>
+        <div class="fixed-bottom">
+                <span class="navbar-text text-white">
+                        <a href="/meetTeam">
+                            <i class="far fa-laugh-beam"></i> Meet the Team
+                        </a>
+                    </span>
+        </div>
     </div>
+
+
 
 
 
@@ -88,6 +97,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- EbayAPI Javascript -->
     <script type="text/javascript" src="assets/js/ebayAPI.js"></script>
+    <!-- Moving Letters Javascript -->
+    <script type="text/javascript" src="assets/js/movingLetter.js"></script>
 
 </body>
 
