@@ -1,4 +1,3 @@
-// import { start } from "repl";
 
 // Get references to page elements
 var $exampleText = $("#example-text");
@@ -8,16 +7,6 @@ var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  // saveExample: function(example) {
-  //   return $.ajax({
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     type: "POST",
-  //     url: "api/examples",
-  //     data: JSON.stringify(example)
-  //   });
-  // },
   getQuestions: function (cb) {
     return $.ajax({
       url: "api/questions",
@@ -61,13 +50,6 @@ var API = {
       cb();
     });
   }
-    //,
-  // deleteExample: function(id) {
-  //   return $.ajax({
-  //     url: "api/examples/" + id,
-  //     type: "DELETE"
-  //   });
-  // }
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
@@ -147,6 +129,8 @@ var questions = [];
 var timer;
 var game;
 var currentUser;
+var correctChoice;
+
 
 function startGame(data) {
   
@@ -180,15 +164,22 @@ function startGame(data) {
       };
       // console.log(questions[i].choices);
 
-      card.html("<h2>User Name: " + currentUser.user_name + "</h2>" 
-        + "<h2>Current Best Score: " + currentUser.best_score + "</h2>"
-        + "<h2>The category is: " + questions[game.currentQuestion].category + "</h2>" 
-        + "<h2>" + questions[game.currentQuestion].question + "</h2>");
+      card.html(`
+          <div class="quizUserInfo">  
+          <h3>User Name: ${currentUser.user_name}</h3>
+            <h3>Current Best Score: ${currentUser.best_score}</h3>
+          </div>
+            <br>
+          <div class="categoryAndQuestion">
+            <h3 class="quizCategory"> The category is: ${questions[game.currentQuestion].category}</h3> 
+            <h2 class="quizCurrentQuestion">${questions[game.currentQuestion].question}</h2>
+          </div>
+        `);
 
       for (var i = 0; i < questions[game.currentQuestion].choices.length; i++) {
         // currentQuestion = 0
 
-        card.append("<button class='answer-button' id='button' data-name='" + i + "'>" + questions[game.currentQuestion].choices[i] + "</button>");
+        card.append("<button class='btn btn-warning mx-1 answer-button' id='button' data-name='" + i + "'>" + questions[game.currentQuestion].choices[i] + "</button>");
       }
     },
 
@@ -201,12 +192,17 @@ function startGame(data) {
 
     timeUp: function () {
       clearInterval(timer);
+      correctChoice = questions[game.currentQuestion].correctAnswer;
 
       $("#counter-number").html(game.counter);
 
-      card.html("<h2>Out of Time!</h2>");
-      card.append("<h3>The Correct Answer was: " + questions[game.currentQuestion].correctAnswer);
-      card.append("<img src='" + questions[game.currentQuestion].image + "' />");
+      card.html("<h2 class='results'> Out of Time!</h2>");
+      card.append(`
+      <div class="correctAnswerWas">
+      <h3>The Correct Answer was:${questions[game.currentQuestion].choices[correctChoice]}</h3>
+      <img src="${questions[game.currentQuestion].image}"/>
+      </div>
+      `);
 
       if (game.currentQuestion === questions.length - 1) {
         setTimeout(game.results, 3 * 1000);
@@ -218,14 +214,22 @@ function startGame(data) {
     results: function () {
       clearInterval(timer);
 
-      card.html("<h2>All done, here's how you did!</h2>");
+      card.html("<h2 class='results allDone'>All done, here's how you did!</h2>");
 
       $("#counter-number").text(game.counter);
 
-      card.append("<h3>Correct Answers: " + game.correct + "</h3>");
-      card.append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
-      card.append("<h3>Unanswered: " + (questions.length - (game.incorrect + game.correct)) + "</h3>");
-      card.append("<br><button id='start-over'>Start Over?</button>");
+      card.append(`
+          <div class="results">
+            <h3>Current User: ${currentUser.user_name}</h3>
+            <div class="quizDoneAnswers">
+              <h3>Correct Answers: ${game.correct}</h3>
+              <h3>Incorrect Answers: ${game.incorrect}</h3>
+              <h3>Unanswered: ${(questions.length - (game.incorrect + game.correct))}</h3>
+            </div>
+            <br>
+            <button class="btn btn-primary" id='start-over'>Start Over?</button>
+          </div>
+          `);
       if (game.correct > currentUser.best_score) {
         API.updateUser({
           user_name: currentUser.user_name, 
@@ -250,12 +254,15 @@ function startGame(data) {
       game.incorrect++;
 
       clearInterval(timer);
-      var correctChoice = questions[game.currentQuestion].correctAnswer;
-      card.html("<h2>Nope!</h2>");
-      card.append(
-        "<h3>The Correct Answer was: " + questions[game.currentQuestion].choices[correctChoice] + "</h3>"
-      );
-      card.append("<img src='" + questions[game.currentQuestion].image + "' />");
+      correctChoice = questions[game.currentQuestion].correctAnswer;
+      card.html("<h2 class='results'>Nope!</h2>");
+      card.append(`
+            <div class="results">
+            <h3>The Correct Answer was: ${questions[game.currentQuestion].choices[correctChoice]}</h3>
+            <br>
+            <img src="${questions[game.currentQuestion].image}"/>
+            </div>
+          `);
 
       if (game.currentQuestion === questions.length - 1) {
         // setTimeout(game.results, 3 * 1000);
@@ -270,8 +277,8 @@ function startGame(data) {
 
       game.correct++;
 
-      card.html("<h2>Correct!</h2>");
-      card.append("<img src='" + questions[game.currentQuestion].image + "' />");
+      card.html("<h2 class='results'>Correct!</h2>");
+      card.append(`<img src="${questions[game.currentQuestion].image}"/>`);
 
       if (game.currentQuestion === questions.length - 1) {
         setTimeout(game.results, 3 * 1000);
@@ -306,7 +313,7 @@ $(document).on("click", "#start", function (e) {
   e.preventDefault();
   console.log("#start");
   $("#sub-wrapper").prepend(
-    "<h2>Time Remaining: <span id='counter-number'>30</span> Seconds</h2>"
+    "<h2 class='timeRemaining'>Time Remaining: <span id='counter-number'>30</span> Seconds</h2>"
   );
   $("#myBtn").hide();
   
