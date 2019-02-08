@@ -1,6 +1,6 @@
 # Group Project #2 
 
-The Interstellar Universe ------ [Check out our application!]() 
+The Interstellar Universe ------ [Check out our application!](https://github.com/melperez19/groupProject2) 
 
 Team Members --- [Dan](https://github.com/DanRSolomon), [Kieran](https://github.com/LopTwo), [Jennifer](https://github.com/alejosjen), [Melissa](https://github.com/melperez19)
 
@@ -8,14 +8,7 @@ Project Description --- A learning platform based on space data in which users c
                         space and georgraphical data based on the user's location and allow them the opportunity to take a space quiz on a seperate
                         page, in which they will be added to the database of users who have completed the quiz as well.
 
----------------------------------------------------------------------------------------------------------------------------------------------------
-Sketch of final product - 
-
-![layout-image]() 
-
--- created by Team Member...
-
----------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------
 
 Final application screesnshot -
 
@@ -27,9 +20,9 @@ Final application screesnshot -
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 APIs and Technologies used
 
-* OpenWeather API - to pull weather data based on location
 * NASA APOD API - to provide NASA's 'Image of the Day' with description
 * Weather API - based on location input
+* Ebay's Finding API - to provide product search results on our 'products' page
 * spaceDB - created API Get and Post requests to our own MySQL database for the quiz page of the app
 * Live Space Station Tracking Map & The Spot The Station widget - shows where the Space Station is right now lets you display ISS  
   sighting opportunities based on exact location. 
@@ -46,7 +39,7 @@ Rough Breakdown of Tasks
 * Have both GET and POST routes for retrieving and adding new data; 
   Get routes were created with all API's and Post routes to the spaceDB adds on new user information
 
-* Be deployed using Heroku (with Data);
+* Be deployed using Heroku (with Data); Done
 
 * Have a polished frontend / UI;
   Done
